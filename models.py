@@ -1,12 +1,4 @@
-from sqlalchemy import Column, Integer, String, DateTime
-from sqlalchemy.ext.declarative import declarative_base
-
-Base = declarative_base()
-
-class Department(Base):
-    __tablename__ = 'departments'
-    id = Column(Integer, primary_key=True)
-    department = Column(String)
+from db import db
 
 class Department(db.Model):
     __tablename__ = 'departments'
