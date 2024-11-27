@@ -1,7 +1,7 @@
 from flask import Blueprint, request, jsonify
-from models import Department, Job, Employee
-from db import db
-from utils import connect_s3, fetch_csv_from_s3
+from app.models import Department, Job, Employee
+from app.db import db
+from app.utils import connect_s3, fetch_csv_from_s3
 
 api = Blueprint('api', __name__)
 
