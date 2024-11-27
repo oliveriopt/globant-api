@@ -1,18 +1,22 @@
-from db import db
+from sqlalchemy import Column, Integer, String, DateTime
+from sqlalchemy.ext.declarative import declarative_base
 
-class Department(db.Model):
+Base = declarative_base()
+
+class Department(Base):
     __tablename__ = 'departments'
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(100), nullable=False)
+    id = Column(Integer, primary_key=True)
+    department = Column(String)
 
-class Job(db.Model):
+class Job(Base):
     __tablename__ = 'jobs'
-    id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(100), nullable=False)
+    id = Column(Integer, primary_key=True)
+    title = Column(String)
 
-class Employee(db.Model):
+class Employee(Base):
     __tablename__ = 'employees'
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(100), nullable=False)
-    job_id = db.Column(db.Integer, db.ForeignKey('jobs.id'))
-    department_id = db.Column(db.Integer, db.ForeignKey('departments.id'))
+    id = Column(Integer, primary_key=True)
+    name = Column(String)
+    hire_datetime = Column(DateTime)
+    department_id = Column(Integer)
+    job_id = Column(Integer)
